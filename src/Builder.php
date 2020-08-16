@@ -175,12 +175,22 @@ class Builder
      */
     public function getForEntity(): array
     {
+        if ($this->entityModel){
 
-        if ($this->entityModel && ($tags = $this->entityModel->metaTag->first())) {
-            return array_merge(
-                $this->getResult(),
-                $tags->toArray()
-            );
+            $metaTags = $this->entityModel->metaTag;
+
+            if($metaTags) {
+
+                if(is_a($metaTags, "\Illuminate\Database\Eloquent\Collection")) {
+                    $metaTags = $metaTags->first();
+                }
+
+                return array_merge(
+                    $this->getResult(),
+                    $metaTags->toArray()
+                );
+            }
+
         }
 
         return [];

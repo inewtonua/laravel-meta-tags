@@ -8,8 +8,11 @@ trait Metatagable
     {
         $modelClass = config('meta-tags.model', \Inewtonua\LaravelMetaTags\Models\MetaTag::class);
 
-      //  return $this->morphOne($modelClass, 'model');
+        if(config('meta-tags.langs', true)) {
+            return $this->morphMany($modelClass, 'model')->where('locale', app()->getLocale());
+        } else {
+            return $this->morphOne($modelClass, 'model');
+        }
 
-        return $this->morphMany($modelClass, 'model')->where('locale', app()->getLocale());
     }
 }
