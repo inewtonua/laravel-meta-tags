@@ -1,0 +1,35 @@
+{
+    "name": "inewtonua/laravel-meta-tags",
+    "description": "A package to manage SEO (meta-tags, xml-fields, etc.)",
+    "type": "composer-package",
+    "keywords": ["meta tags", "meta", "tags", "seo", "seo", "laravel"],
+    "authors": [
+        {
+            "name": "Dmitriy Koval",
+            "email": "mirelcom@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php" : ">=7.0.0",
+        "illuminate/support": "^5.8|^6.0|^7.0",
+        "illuminate/database": "^5.8|^6.0|^7.0",
+        "illuminate/view": "^5.8|^6.0|^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Inewtonua\\LaravelMetaTags\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Inewtonua\\LaravelMetaTags\\ServiceProvider"
+            ],
+            "aliases": {
+                "MetaTag": "Inewtonua\\LaravelMetaTags\\Facade"
+            }
+        }
+    }
+}
