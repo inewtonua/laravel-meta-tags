@@ -181,14 +181,16 @@ class Builder
 
             if($metaTags) {
 
-                if(is_a($metaTags, "\Illuminate\Database\Eloquent\Collection")) {
+                if(is_a($metaTags, "\Illuminate\Database\Eloquent\Collection") && !$metaTags->isEmpty()) {
                     $metaTags = $metaTags->first();
                 }
 
-                return array_merge(
-                    $this->getResult(),
-                    $metaTags->toArray()
-                );
+                if($metaTags){
+                    return array_merge(
+                        $this->getResult(),
+                        $metaTags->toArray()
+                    );
+                }
             }
 
         }
