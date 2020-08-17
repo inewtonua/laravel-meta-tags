@@ -1,6 +1,6 @@
 @extends('system.layouts.app')
 
-@section('page_title', $model->path . ' | ' . __('Meta tags'))
+@section('page_title', isset($model->metatagable->title) ? $model->metatagable->title : $model->path . ' | ' . __('Meta tags'))
 
 @section('breadcrumbs', Breadcrumbs::render('system.meta-tags'))
 
@@ -9,7 +9,7 @@
         <div class="level-left">
             <div class="level-item">
                 <h1 class="title">
-                    <small class="text-secondary text-small">Путь:</small> {{ $model->path }} @if($model->path  == '/') <small class="text-secondary ">Главная страница</small>@endif
+                    <small class="text-secondary text-small">Путь:</small> {{ isset($model->metatagable->title) ? $model->metatagable->title : $model->path  }} @if($model->path  == '/') <small class="text-secondary ">Главная страница</small>@endif
                 </h1>
             </div>
             <div class="level-item">
