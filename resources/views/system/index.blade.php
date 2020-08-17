@@ -12,7 +12,7 @@
             </div>
 
             <div class="level-item">
-                <a href="{{route('system.metatags.create')}}" class="button is-primary">
+                <a href="{{route('system.meta-tags.create')}}" class="button is-primary">
                     @lang('Add page meta tags')
                 </a>
             </div>
@@ -161,7 +161,7 @@
                 <td class="has-text-centered">
 
                     <a title="@lang('Edit')" class="tag is-info edit-record"
-                       href="{{ route('system.metatags.edit', $model) }}">@lang('Edit')</a>
+                       href="{{ route('system.meta-tags.edit', $model) }}">@lang('Edit')</a>
 
                     <a title="@lang('Delete')" class="tag is-danger delete-record"
                        data-id="{{ $model->id }}">@lang('Delete')</a>
@@ -213,7 +213,7 @@
 
                     Noty.button('Да', 'button is-danger is-light is-small mr-2', function () {
 
-                        axios.delete('/system/metatags/destroy', {
+                        axios.delete('/system/meta-tags/destroy', {
                             data: {
                                 id: id
                             }

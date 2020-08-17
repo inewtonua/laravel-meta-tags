@@ -83,10 +83,10 @@ class MetaTagController extends Controller
         return redirect()->route('system.meta-tags.index')->with('success', 'Метатеги добавлены.');
     }
 
-    public function edit(MetaTag $metatag)
+    public function edit(MetaTag $meta_tag)
     {
         return view('meta-tags::system.edit', [
-            'model' => $metatag,
+            'model' => $meta_tag,
         ]);
     }
 

@@ -2,7 +2,7 @@
 
 @section('page_title', $model->path . ' | ' . __('Meta tags'))
 
-@section('breadcrumbs', Breadcrumbs::render('system.metatags'))
+@section('breadcrumbs', Breadcrumbs::render('system.meta-tags'))
 
 @section('top')
     <nav class="level my-4">
@@ -23,13 +23,13 @@
 
 @section('content')
 
-    <form class="form-horizontal" action="{{ route('system.metatags.update', $model) }}" method="post">
+    <form class="form-horizontal" action="{{ route('system.meta-tags.update', $model) }}" method="post">
 
         @csrf
 
         @method('PUT')
 
-        @include('system.metatags.partials.form')
+        @include('meta-tags::system.partials.form')
 
     </form>
 

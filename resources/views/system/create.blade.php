@@ -2,7 +2,7 @@
 
 @section('page_title', __('Create meta tags for page') . ' | ' . __('Meta tags'))
 
-@section('breadcrumbs', Breadcrumbs::render('system.metatags'))
+@section('breadcrumbs', Breadcrumbs::render('system.meta-tags'))
 
 @section('top')
     <nav class="level my-4">
@@ -21,13 +21,13 @@
 
 @section('content')
 
-    <form class="form-horizontal" action="{{ route('system.metatags.store') }}" method="post">
+    <form class="form-horizontal" action="{{ route('system.meta-tags.store') }}" method="post">
 
         @csrf
 
         @method('post')
 
-        @include('system.metatags.partials.form')
+        @include('meta-tags::system.partials.form')
 
     </form>
 
