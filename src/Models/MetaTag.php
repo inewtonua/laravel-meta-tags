@@ -28,4 +28,22 @@ class MetaTag extends Model
     {
         return $query->where('path', $path);
     }
+
+//    public function byLocale(string $locale = null) {
+//        $this->firstWhere('locale', $locale ?? app()->getLocale());
+//    }
+
+    public function scopePath($query)
+    {
+        return $query->whereNotNull('path');
+    }
+    public function scopeModel($query)
+    {
+        return $query->whereNull('path');
+    }
+
+    public static function types(){
+        return self::whereNotNull('model_type')->select('model_type')->distinct()->get()->pluck('model_type')->toArray();
+    }
+
 }

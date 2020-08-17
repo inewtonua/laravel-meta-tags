@@ -2,7 +2,6 @@
 
 namespace Inewtonua\LaravelMetaTags;
 
-use App\Models\MetaTag;
 use Illuminate\Database\Eloquent\Model;
 
 class Builder
@@ -177,25 +176,43 @@ class Builder
     {
         if ($this->entityModel){
 
-            $metaTags = $this->entityModel->metaTag;
+            
+            $metaTags = $this->getEntityModelTagsByLocale();
 
             if($metaTags) {
 
-                if(is_a($metaTags, "\Illuminate\Database\Eloquent\Collection") && !$metaTags->isEmpty()) {
-                    $metaTags = $metaTags->first();
-                }
+                return array_merge(
+                    $this->getResult(),
+                    $metaTags->toArray()
+                );
 
-                if($metaTags){
-                    return array_merge(
-                        $this->getResult(),
-                        $metaTags->toArray()
-                    );
-                }
             }
+
+//            if($metaTags) {
+//
+//                if(is_a($metaTags, "\Illuminate\Database\Eloquent\Collection") && !$metaTags->isEmpty()) {
+//                    $metaTags = $metaTags->first();
+//                }
+//
+//                if($metaTags){
+//                    return array_merge(
+//                        $this->getResult(),
+//                        $metaTags->toArray()
+//                    );
+//                }
+//            }
 
         }
 
         return [];
+    }
+
+    /**
+     * @return object or null
+     */
+    protected function getEntityModelTagsByLocale(string $locale = null)
+    {
+        return $this->entityModel->metaTag->firstWhere('locale', $locale ?? app()->getLocale());
     }
 
     /**

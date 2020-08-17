@@ -19,12 +19,13 @@ class CreateMetaTagsTable extends Migration
             // url path - without domain
             $table->string('path')->nullable();
 
+            // locale
+            $table->string('locale', 2)->nullable();
+
             // metatagable: node, term,...
             $table->integer('model_id')->nullable();
             $table->string('model_type')->nullable();
 
-            // locale
-            $table->string('locale', 2)->nullable();
 
             // Meta-tags
             $table->string('title')->nullable();

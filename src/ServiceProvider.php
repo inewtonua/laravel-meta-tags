@@ -22,6 +22,17 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->publishes([
             __DIR__.'/../resources/views' => resource_path('views/vendor/meta-tags'),
         ]);
+
+
+//        /**
+//         * Publish resources
+//         */
+//        $viewPath = __DIR__.'/../resources/views';
+//        $this->loadViewsFrom($viewPath, 'uploads');
+//        $this->publishes([
+//            $viewPath => base_path('resources/views/vendor/uploads'),
+//        ], 'upload-views');
+
     }
 
     /**
