@@ -57,6 +57,20 @@
             </div>
 
             <div class="field">
+                <label for="meta_tags_h1_field-{{$localeCode}}" class="label">H1</label>
+                <div class="control">
+                    <input type="text"
+                           id="meta_tags_h1_field-{{$localeCode}}"
+                           class="input @error('meta_tags.{{$localeCode}}.h1') is-danger @enderror"
+                           name="meta_tags[{{$localeCode}}][h1]"
+                           value="{{ old('meta_tags.'.$localeCode.'.h1', $model->metaTag->firstWhere('locale', $localeCode)->h1 ?? '') }}">
+                </div>
+                @error('meta_tags.'.$localeCode.'.h1')
+                <p class="help is-danger">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div class="field">
                 <label for="meta_tags_robots_field-{{$localeCode}}" class="label">@lang('Robots')</label>
                 <div class="select">
                     <select class="form-control" id="meta_tags_robots_field-{{$localeCode}}"
